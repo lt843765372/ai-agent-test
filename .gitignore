@@ -1,0 +1,15 @@
+# .gitignore 文件内容
+
+# 排除主环境变量文件（包含敏感信息）
+.env
+
+# 可选：排除所有以 .env 开头的环境文件（如 .env.local、.env.prod 等）
+.env*
+
+# 排除 Python 缓存文件（可选，但推荐）
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+.idea

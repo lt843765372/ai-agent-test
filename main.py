@@ -21,5 +21,5 @@ if __name__ == "__main__":
     # ai_msg = llm.invoke(messages)
     ai_msg = llm.stream(messages)
     for msg in ai_msg:
-        print(msg)
-    print(ai_msg)
+        print(msg.content, end="")
+    # print(ai_msg)
