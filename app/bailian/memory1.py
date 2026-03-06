@@ -2,10 +2,10 @@ import os
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import START, MessagesState, StateGraph
 from langchain_openai import ChatOpenAI
-from pydantic import SecretStr
-from langchain_core.messages import HumanMessage
 from dotenv import load_dotenv
+from pydantic import SecretStr
 load_dotenv()
+from langchain_core.messages import HumanMessage
 # 这段代码实现了一个 “带记忆的 AI 对话功能”：它用 LangGraph 搭了一个最简单的对话流程，每次你输入问题，代码会调用通义千问模型生成回答，
 # #同时 MemorySaver 会自动把对话历史存起来，下次提问时模型就能参考之前的内容，不会像普通单次调用那样 “失忆”。
 
@@ -41,8 +41,8 @@ def call_model(state: MessagesState):
 
 
 # **********定义图中的（单个）节点**********
-workflow.add_edge(START, "model")
 workflow.add_node("model", call_model)
+workflow.add_edge(START, "model")
 
 # 添加内存持久化
 memory = MemorySaver()
